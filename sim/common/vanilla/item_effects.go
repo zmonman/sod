@@ -1,6 +1,7 @@
 package vanilla
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/wowsims/sod/sim/common/itemhelpers"
@@ -240,6 +241,7 @@ func init() {
 				},
 			})
 		})
+		
 		mightOfShahram := character.GetOrRegisterSpell(core.SpellConfig{
 			ActionID:    core.ActionID{SpellID: 16600},
 			SpellSchool: core.SpellSchoolArcane,
@@ -252,11 +254,12 @@ func init() {
 			},
 		})
 
-		fistOfShahramAuras := character.NewPartyAuraArray(func(unit *core.Unit) *core.Aura {
+		/*fistOfShahramAuras := character.NewPartyAuraArray(func(unit *core.Unit) *core.Aura {
 			return unit.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 16601},
 				Label:    "Fist of Shahram",
 				Duration: time.Second * 8,
+				MaxStacks: 5,
 				OnGain: func(aura *core.Aura, sim *core.Simulation) {
 					character.MultiplyAttackSpeed(sim, 1.3)
 				},
@@ -264,16 +267,50 @@ func init() {
 					character.MultiplyAttackSpeed(sim, 1/1.3)
 				},
 			})
-		})
+		})*/
+		
+
+
 		fistOfShahram := character.GetOrRegisterSpell(core.SpellConfig{
 			ActionID:    core.ActionID{SpellID: 16601},
 			SpellSchool: core.SpellSchoolArcane,
 			DefenseType: core.DefenseTypeMagic,
 			ProcMask:    core.ProcMaskEmpty,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				for _, aura := range fistOfShahramAuras {
+				/*for _, aura := range fistOfShahramAuras {
 					aura.Activate(sim)
+				}*/
+				
+				counter := 0
+				
+				for counter < 10 {
+					fistOfShahramAura := character.GetOrRegisterAura(core.Aura{
+						ActionID: core.ActionID{SpellID: 16601},
+						//Label:    "Fist of Shahram",  
+						//Label: fmt.Sprintf("Fist of Shahram (%s)(%f)", spell.ActionID.String(), sim.RandomFloat(spell.ActionID.String())),
+						Label: fmt.Sprintf("Fist of Shahram (%d)", counter),
+						Duration: time.Second * 8,
+						OnGain: func(aura *core.Aura, sim *core.Simulation) {
+							//character.PseudoStats.MeleeSpeedMultiplier *= 1.3
+							character.MultiplyAttackSpeed(sim, 1.3)
+						},
+						OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+							//character.PseudoStats.MeleeSpeedMultiplier /= 1.3
+							character.MultiplyAttackSpeed(sim, 1/(1.3))
+						},
+					})
+					
+					if !fistOfShahramAura.IsActive() {
+					    fistOfShahramAura.Activate(sim)
+					    break
+					}
+					
+					counter += 1
+					
 				}
+				
+
+				
 			},
 		})
 
@@ -307,18 +344,18 @@ func init() {
 			},
 		})
 
-		willOfShahramAura := character.GetOrRegisterAura(core.Aura{
+		willOfShahramAura := character.RegisterAura(core.Aura{
 			ActionID:  core.ActionID{SpellID: 16598},
 			Label:     "Will of Shahram",
 			Duration:  time.Second * 20,
 			MaxStacks: 5,
 			OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
 				stats := stats.Stats{
-					stats.Agility:   25,
-					stats.Intellect: 25,
-					stats.Stamina:   25,
-					stats.Spirit:    25,
-					stats.Strength:  25,
+					stats.Agility:   50,
+					stats.Intellect: 50,
+					stats.Stamina:   50,
+					stats.Spirit:    50,
+					stats.Strength:  50,
 				}
 				character.AddStatsDynamic(sim, stats.Multiply(float64(-1*oldStacks)))
 				character.AddStatsDynamic(sim, stats.Multiply(float64(newStacks)))
@@ -728,7 +765,7 @@ func init() {
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 18797})
+				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 18797}, spell.ActionID)
 			},
 		})
 	})
@@ -1095,7 +1132,7 @@ func init() {
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				character.AutoAttacks.ExtraMHAttack(sim, 2, core.ActionID{SpellID: 15494})
+				character.AutoAttacks.ExtraMHAttack(sim, 2, core.ActionID{SpellID: 15494}, spell.ActionID)
 			},
 		})
 	})
@@ -1849,7 +1886,7 @@ func init() {
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 21919})
+				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 21919}, spell.ActionID)
 			},
 		})
 	})
@@ -1970,7 +2007,7 @@ func init() {
 			SpellFlagsExclude: core.SpellFlagSuppressWeaponProcs,
 			PPM:               1.0,
 			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 461985})
+				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 461985}, spell.ActionID)
 			},
 		})
 	})
@@ -2269,9 +2306,14 @@ func init() {
 				if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
 					return
 				}
-				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.02, "HandOfJustice") {
+				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.20, "HandOfJustice") {
 					icd.Use(sim)
-					aura.Unit.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 15600})
+
+					if spell.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
+						aura.Unit.AutoAttacks.StoreExtraMHAttack(sim, 1, core.ActionID{SpellID: 15600}, spell.ActionID)
+					} else {
+						aura.Unit.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 15600}, spell.ActionID)
+					}
 				}
 			},
 		})
