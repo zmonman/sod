@@ -286,9 +286,8 @@ func (wa *WeaponAttack) castExtraAttacksTriggered(sim *Simulation, moreAttacks b
 
 func (wa *WeaponAttack) castExtraAttacks(sim *Simulation, numExtraAttacks *int32, startIndex int32) bool {
 	if *numExtraAttacks > 0 {
-		// Ignore the first extra attack, that was used to speed up next attack
-		//wa.swingAt = sim.CurrentTime + SpellBatchWindow
-		//sim.rescheduleWeaponAttack(wa.swingAt)
+		// Ignore the first extra attack, that was used to speed up next attack (if startIndex == 1)
+
 		if sim.Log != nil {
 			wa.unit.Log(sim, "Setting MH spell metric to 1")
 		}
@@ -307,10 +306,6 @@ func (wa *WeaponAttack) castExtraAttacks(sim *Simulation, numExtraAttacks *int32
 			// use original attacks for subsequent extra Attacks
 			wa.spell.Cast(sim, wa.unit.CurrentTarget)
 		}
-		
-		//wa.swingAt = sim.CurrentTime + wa.curSwingDuration
-		//wa.lastSwingAt = sim.CurrentTime
-		//*numExtraAttacks = 0
 
 		return true
 	}
@@ -369,13 +364,8 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 			}
 		}
 
-		//wa.extraAttacks = wa.extraAttacksPending
-		//wa.extraAttacksPending = 0
 		attackSpell.Cast(sim, wa.unit.CurrentTarget)
 
-		if sim.Log != nil {
-			wa.unit.Log(sim, "Extra attacks pending is %d", wa.extraAttacksPending)
-		}
 		moreAttacks := !isExtraAttack && wa.extraAttacksPending > 0 // True if above cast is a normal Auto attack that triggered an Extra Attack
 		wa.castExtraAttacksTriggered(sim, moreAttacks) // more attacks means we don't count the above cast
 
@@ -399,7 +389,7 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 
 		if wa.extraAttacksPending > 0 {
 			if sim.Log != nil {
-				wa.unit.Log(sim, "More extra attacks pending")
+				wa.unit.Log(sim, "More extra attacks pending: %d", wa.extraAttacksPending)
 			}
 			wa.spell.SetMetricsSplit(1)
 			wa.swingAt = sim.CurrentTime + SpellBatchWindow

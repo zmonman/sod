@@ -1463,6 +1463,7 @@ func init() {
 			ProcMask:         core.ProcMaskEmpty,
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
+			BonusCoefficient: 1.0,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				result := spell.CalcAndDealDamage(sim, target, sim.Roll(180, 220), spell.OutcomeMagicHit)
 				character.GainHealth(sim, result.Damage, healthMetrics)
@@ -2306,7 +2307,7 @@ func init() {
 				if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
 					return
 				}
-				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.20, "HandOfJustice") {
+				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.02, "HandOfJustice") {
 					icd.Use(sim)
 
 					if spell.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {

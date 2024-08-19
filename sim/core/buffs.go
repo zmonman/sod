@@ -2158,7 +2158,7 @@ func ApplyWildStrikes(character *Character) *Aura {
 
 	extraAttacksAura := character.GetOrRegisterAura(Aura{
 		Label:     "Extra Attacks",
-		ActionID:   ActionID{SpellID: 23060}, // Thrash ID
+		ActionID:   ActionID{SpellID: 21919}, // Thrash ID
 		Duration:  NeverExpires,
 		MaxStacks: 4,
 		OnGain: func(aura *Aura, sim *Simulation) {
@@ -2184,11 +2184,6 @@ func ApplyWildStrikes(character *Character) *Aura {
 	icd := Cooldown{
 		Timer:    character.NewTimer(),
 		Duration: time.Millisecond * 1500,
-	}
-	
-	storeLeeway := Cooldown{
-		Timer:    character.NewTimer(),
-		Duration: time.Millisecond * 5,
 	}
 
 	wsBuffAura.Icd = &icd
@@ -2222,7 +2217,6 @@ func ApplyWildStrikes(character *Character) *Aura {
 				
 				
 				if spell.Flags.Matches(SpellFlagBatchStopAttackMacro) {
-					storeLeeway.Use(sim)
 					aura.Unit.AutoAttacks.StoreExtraMHAttack(sim, 1, buffActionID, spell.ActionID)
 					
 					if !extraAttacksAura.IsActive() {
@@ -2233,20 +2227,7 @@ func ApplyWildStrikes(character *Character) *Aura {
 				} else {
 					aura.Unit.AutoAttacks.ExtraMHAttack(sim, 1, buffActionID, spell.ActionID)
 				}
-
-
-				//if spell.SpellID == 20966 || spell.SpellID == 407778 || spell.SpellID == 407676 || spell.SpellID == 407803 {
-					//storeLeeway.Use(sim)
-				//	aura.Unit.AutoAttacks.StoreExtraMHAttack(sim, 1, buffActionID, spell.ActionID)
-				//} else {
-					//aura.Unit.AutoAttacks.ExtraMHAttack(sim, 1, buffActionID, spell.ActionID)
-					//extraAttacksSaved = 0		
-				//}
-			} //else {
-			//	aura.Unit.AutoAttacks.ExtraMHAttack(sim, 0, buffActionID, spell.ActionID);
-			//}
-			
-			
+			}
 		},
 	}))
 
