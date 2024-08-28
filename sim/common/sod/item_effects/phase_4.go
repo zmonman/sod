@@ -21,6 +21,7 @@ const (
 	TreantsBane              = 228486
 	FistOfTheFireswornMolten = 229374
 	StuddedTimbermawBrawlers = 227809
+	Jeklik                   = 19918
 )
 
 func init() {
@@ -33,6 +34,9 @@ func init() {
 	// https://www.wowhead.com/classic/item=228139/fist-of-the-firesworn
 	// Chance on hit: Blasts the enemy for 70 Fire damage.
 	// TODO: Proc rate assumed and needs testing
+
+	itemhelpers.CreateWeaponProcDamagePhantomStrike(Jeklik, "Jeklik's Crusher", 4.0, 24257, core.SpellSchoolPhysical, 200, 20, 0.0, core.DefenseTypeMelee)
+
 	itemhelpers.CreateWeaponProcDamage(FistOfTheFiresworn, "Fist of the Firesworn", 1.0, 461896, core.SpellSchoolFire, 70, 0, 0.15, core.DefenseTypeMagic)
 	itemhelpers.CreateWeaponProcDamage(FistOfTheFireswornMolten, "Fist of the Firesworn", 1.0, 461896, core.SpellSchoolFire, 70, 0, 0.15, core.DefenseTypeMagic)
 
