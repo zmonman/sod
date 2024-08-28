@@ -100,7 +100,7 @@ stat_weights_results: {
  key: "TestMM-Lvl40-StatWeights-Default"
  value: {
   weights: 0
-  weights: 0.39826
+  weights: 0.49944
   weights: 0
   weights: 0
   weights: 0
@@ -116,9 +116,9 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.12423
-  weights: 3.9493
-  weights: 3.81229
+  weights: 0.17185
+  weights: 3.93057
+  weights: 4.00396
   weights: 0
   weights: 0
   weights: 0
@@ -126,7 +126,7 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.03536
+  weights: 0.03537
   weights: 0
   weights: 0
   weights: 0
@@ -149,7 +149,7 @@ stat_weights_results: {
  key: "TestMM-Lvl60-StatWeights-Default"
  value: {
   weights: 0
-  weights: 0.53558
+  weights: 0.5365
   weights: 0
   weights: 0
   weights: 0
@@ -165,17 +165,17 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.2078
+  weights: 0.20653
   weights: 0
-  weights: 4.97263
-  weights: 0
-  weights: 0
+  weights: 4.97207
   weights: 0
   weights: 0
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.04099
+  weights: 0
+  weights: 0
+  weights: 0.04205
   weights: 0
   weights: 0
   weights: 0
@@ -197,22 +197,22 @@ stat_weights_results: {
 dps_results: {
  key: "TestMM-Lvl40-AllItems-BeastmasterArmor"
  value: {
-  dps: 330.52095
-  tps: 170.61579
+  dps: 394.56004
+  tps: 235.6074
  }
 }
 dps_results: {
  key: "TestMM-Lvl40-AllItems-SignetofBeasts-209823"
  value: {
-  dps: 339.35278
-  tps: 181.98835
+  dps: 410.72168
+  tps: 253.63353
  }
 }
 dps_results: {
  key: "TestMM-Lvl40-Average-Default"
  value: {
-  dps: 342.93028
-  tps: 185.15474
+  dps: 413.39385
+  tps: 256.12646
  }
 }
 dps_results: {
@@ -302,8 +302,8 @@ dps_results: {
 dps_results: {
  key: "TestMM-Lvl40-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 328.45913
-  tps: 171.54707
+  dps: 397.15264
+  tps: 240.70062
  }
 }
 dps_results: {
@@ -317,40 +317,40 @@ dps_results: {
 dps_results: {
  key: "TestMM-Lvl60-AllItems-BloodGuard'sChain"
  value: {
-  dps: 710.01813
-  tps: 710.12858
+  dps: 709.77392
+  tps: 709.88437
   hps: 9.28907
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-AllItems-BloodGuard'sMail"
  value: {
-  dps: 680.65206
-  tps: 680.76251
+  dps: 679.31925
+  tps: 679.4297
   hps: 9.28907
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-AllItems-BloodlashBow-216516"
  value: {
-  dps: 876.0816
-  tps: 876.19205
+  dps: 875.97433
+  tps: 876.08478
   hps: 12.48566
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-AllItems-DevilsaurEye-19991"
  value: {
-  dps: 874.91829
-  tps: 875.02874
+  dps: 874.84056
+  tps: 874.95101
   hps: 12.48566
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-AllItems-DevilsaurTooth-19992"
  value: {
-  dps: 867.72165
-  tps: 867.8321
+  dps: 867.67619
+  tps: 867.78664
   hps: 12.48566
  }
 }
@@ -365,40 +365,40 @@ dps_results: {
 dps_results: {
  key: "TestMM-Lvl60-AllItems-EmeraldScalemail"
  value: {
-  dps: 687.27678
-  tps: 687.38723
+  dps: 686.43565
+  tps: 686.5461
   hps: 9.28907
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-AllItems-GurubashiPitFighter'sBow-221450"
  value: {
-  dps: 877.66385
-  tps: 877.7743
+  dps: 877.52347
+  tps: 877.63392
   hps: 12.48566
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-AllItems-Knight-Lieutenant'sChain"
  value: {
-  dps: 710.01813
-  tps: 710.12858
+  dps: 709.77392
+  tps: 709.88437
   hps: 9.28907
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-AllItems-SignetofBeasts-209823"
  value: {
-  dps: 863.46913
-  tps: 863.57958
+  dps: 863.44059
+  tps: 863.55104
   hps: 12.48566
  }
 }
 dps_results: {
  key: "TestMM-Lvl60-Average-Default"
  value: {
-  dps: 882.95378
-  tps: 883.06102
+  dps: 882.91404
+  tps: 883.02127
   hps: 12.54302
  }
 }
@@ -501,8 +501,8 @@ dps_results: {
 dps_results: {
  key: "TestMM-Lvl60-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 731.01495
-  tps: 731.1254
+  dps: 730.99257
+  tps: 731.10302
   hps: 10.67456
  }
 }

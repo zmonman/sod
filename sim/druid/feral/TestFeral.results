@@ -197,8 +197,8 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestFeral-Lvl25-StatWeights-Default"
  value: {
-  weights: 0.59188
-  weights: 0.54305
+  weights: 0.57453
+  weights: 0.51517
   weights: 0
   weights: 0
   weights: 0
@@ -214,9 +214,9 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.26903
-  weights: 2.22687
-  weights: 2.24498
+  weights: 0.26115
+  weights: 1.87654
+  weights: 2.18023
   weights: 0
   weights: 0
   weights: 0
@@ -246,8 +246,8 @@ stat_weights_results: {
 stat_weights_results: {
  key: "TestFeral-Lvl40-StatWeights-Default"
  value: {
-  weights: 0.96881
-  weights: 0.83292
+  weights: 0.94358
+  weights: 0.82918
   weights: 0
   weights: 0
   weights: 0
@@ -263,9 +263,9 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.42346
-  weights: 4.288
-  weights: 5.59088
+  weights: 0.41243
+  weights: 4.12358
+  weights: 5.40095
   weights: 0
   weights: 0
   weights: 0
@@ -295,8 +295,8 @@ stat_weights_results: {
 stat_weights_results: {
  key: "TestFeral-Lvl50-StatWeights-Default"
  value: {
-  weights: 1.61676
-  weights: 1.73808
+  weights: 1.57488
+  weights: 1.70278
   weights: 0
   weights: 0
   weights: 0
@@ -312,9 +312,9 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.68046
-  weights: 17.28808
-  weights: 12.66293
+  weights: 0.66283
+  weights: 16.4014
+  weights: 12.48154
   weights: 0
   weights: 0
   weights: 0
@@ -344,8 +344,8 @@ stat_weights_results: {
 stat_weights_results: {
  key: "TestFeral-Lvl60-StatWeights-Default"
  value: {
-  weights: 2.22049
-  weights: 2.52041
+  weights: 2.16132
+  weights: 2.45205
   weights: 0
   weights: 0
   weights: 0
@@ -361,9 +361,9 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.8411
+  weights: 0.81869
   weights: 0
-  weights: 26.92975
+  weights: 26.80718
   weights: 0
   weights: 0
   weights: 0
@@ -393,15 +393,15 @@ stat_weights_results: {
 dps_results: {
  key: "TestFeral-Lvl25-AllItems-FeralheartRaiment"
  value: {
-  dps: 266.02238
-  tps: 191.4059
+  dps: 260.92277
+  tps: 187.78518
  }
 }
 dps_results: {
  key: "TestFeral-Lvl25-Average-Default"
  value: {
-  dps: 269.51509
-  tps: 195.33
+  dps: 264.26492
+  tps: 191.63935
  }
 }
 dps_results: {
@@ -659,22 +659,22 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Lvl25-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 193.88076
-  tps: 140.8026
+  dps: 188.77562
+  tps: 137.18057
  }
 }
 dps_results: {
  key: "TestFeral-Lvl40-AllItems-FeralheartRaiment"
  value: {
-  dps: 532.68971
-  tps: 388.87826
+  dps: 524.15524
+  tps: 382.815
  }
 }
 dps_results: {
  key: "TestFeral-Lvl40-Average-Default"
  value: {
-  dps: 816.38927
-  tps: 595.32404
+  dps: 802.68586
+  tps: 585.50859
  }
 }
 dps_results: {
@@ -932,23 +932,23 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Lvl40-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 470.96072
-  tps: 337.29431
+  dps: 463.14259
+  tps: 331.70222
  }
 }
 dps_results: {
  key: "TestFeral-Lvl50-AllItems-FeralheartRaiment"
  value: {
-  dps: 917.82114
-  tps: 665.81077
+  dps: 902.92703
+  tps: 655.23595
   hps: 9.17246
  }
 }
 dps_results: {
  key: "TestFeral-Lvl50-Average-Default"
  value: {
-  dps: 2004.39999
-  tps: 1433.77298
+  dps: 1972.31546
+  tps: 1410.99297
   hps: 10.22754
  }
 }
@@ -1243,107 +1243,107 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Lvl50-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 1261.87799
-  tps: 899.65028
+  dps: 1239.96228
+  tps: 884.09012
   hps: 9.39953
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-BloodGuard'sCracklingLeather"
  value: {
-  dps: 1440.78818
-  tps: 1052.65398
+  dps: 1411.9136
+  tps: 1032.10365
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-BloodGuard'sLeather"
  value: {
-  dps: 1491.7704
-  tps: 1088.28257
+  dps: 1461.48938
+  tps: 1066.7546
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-BloodGuard'sRestoredLeather"
  value: {
-  dps: 1405.42868
-  tps: 1026.87878
+  dps: 1377.91559
+  tps: 1007.3411
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-CoagulateBloodguard'sLeathers"
  value: {
-  dps: 2193.8842
-  tps: 1575.98328
+  dps: 2149.65848
+  tps: 1544.58301
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-EmeraldDreamkeeperGarb"
  value: {
-  dps: 1410.62172
-  tps: 1030.84592
+  dps: 1383.65035
+  tps: 1011.62916
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-EmeraldLeathers"
  value: {
-  dps: 1483.53596
-  tps: 1082.42548
+  dps: 1453.4957
+  tps: 1061.06867
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-EmeraldWatcherVestments"
  value: {
-  dps: 1416.29922
-  tps: 1034.82152
+  dps: 1389.74346
+  tps: 1015.9135
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-ExiledProphet'sRaiment"
  value: {
-  dps: 2037.91053
-  tps: 1474.88316
+  dps: 2000.5053
+  tps: 1448.30231
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-FeralheartRaiment"
  value: {
-  dps: 1524.45463
-  tps: 1110.57774
+  dps: 1496.1857
+  tps: 1090.4651
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-Knight-Lieutenant'sCracklingLeather"
  value: {
-  dps: 1440.78818
-  tps: 1052.65398
+  dps: 1411.9136
+  tps: 1032.10365
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-Knight-Lieutenant'sLeather"
  value: {
-  dps: 1491.7704
-  tps: 1088.28257
+  dps: 1461.48938
+  tps: 1066.7546
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-Knight-Lieutenant'sRestoredLeather"
  value: {
-  dps: 1405.42868
-  tps: 1026.87878
+  dps: 1377.91559
+  tps: 1007.3411
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-AllItems-LostWorshipper'sArmor"
  value: {
-  dps: 2100.40841
-  tps: 1519.54703
+  dps: 2059.17327
+  tps: 1490.21175
  }
 }
 dps_results: {
  key: "TestFeral-Lvl60-Average-Default"
  value: {
-  dps: 3909.45782
-  tps: 2799.43092
+  dps: 3843.37814
+  tps: 2752.51289
  }
 }
 dps_results: {
@@ -1601,7 +1601,7 @@ dps_results: {
 dps_results: {
  key: "TestFeral-Lvl60-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 2738.97283
-  tps: 1956.14117
+  dps: 2692.35293
+  tps: 1923.04104
  }
 }
