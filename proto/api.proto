@@ -60,11 +60,6 @@ message Player {
 	SimDatabase database = 18;
 	HealingModel healing_model = 19;
 
-	// Stop Attack Macro Info
-	bool IsUsingCrusaderStrikeStopAttack = 49;
-	bool IsUsingJudgementStopAttack = 50;
-	bool IsUsingDivineStormStopAttack = 51;
-
 	oneof spec {
 		BalanceDruid balance_druid = 20;
 		FeralDruid feral_druid = 21;

@@ -22,6 +22,7 @@ type Paladin struct {
 	core.Character
 
 	Talents *proto.PaladinTalents
+	Options *proto.PaladinOptions
 
 	primarySeal        *core.Spell // the seal configured in options, available via "Cast Primary Seal"
 	primaryPaladinAura proto.PaladinAura
@@ -105,15 +106,16 @@ func (paladin *Paladin) Reset(_ *core.Simulation) {
 }
 
 // maybe need to add stat dependencies
-func NewPaladin(character *core.Character, options *proto.Player, pallyAura proto.PaladinAura) *Paladin {
+func NewPaladin(character *core.Character, options *proto.Player, paladinOptions *proto.PaladinOptions) *Paladin {
 	paladin := &Paladin{
 		Character: *character,
 		Talents:   &proto.PaladinTalents{},
+		Options: paladinOptions,
 	}
 	core.FillTalentsProto(paladin.Talents.ProtoReflect(), options.TalentsString, TalentTreeSizes)
 
-	if pallyAura == proto.PaladinAura_SanctityAura {
-		paladin.primaryPaladinAura = pallyAura
+	if paladin.Options.Aura == proto.PaladinAura_SanctityAura {
+		paladin.primaryPaladinAura = paladin.Options.Aura
 	}
 
 	paladin.PseudoStats.CanParry = true
@@ -156,30 +158,26 @@ func (paladin *Paladin) ResetPrimarySeal(primarySeal proto.PaladinSeal) {
 
 func (paladin *Paladin) registerStopAttackMacros() {
 
-	//paladin.PseudoStats.IsUsingDivineStormStopAttack = true
-	//paladin.PseudoStats.IsUsingCrusaderStrikeStopAttack = true
-	//paladin.PseudoStats.IsUsingJudgementStopAttack = true
-	
-	if paladin.divineStorm != nil && paladin.PseudoStats.IsUsingDivineStormStopAttack != paladin.divineStorm.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
+	if paladin.divineStorm != nil && paladin.Options.IsUsingDivineStormStopAttack != paladin.divineStorm.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
 		paladin.divineStorm.Flags = paladin.divineStorm.Flags ^ core.SpellFlagBatchStopAttackMacro
 	}
 	
-	if paladin.crusaderStrike != nil && paladin.PseudoStats.IsUsingCrusaderStrikeStopAttack != paladin.crusaderStrike.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
+	if paladin.crusaderStrike != nil && paladin.Options.IsUsingCrusaderStrikeStopAttack != paladin.crusaderStrike.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
 		paladin.crusaderStrike.Flags = paladin.crusaderStrike.Flags ^ core.SpellFlagBatchStopAttackMacro
 	}
 
-	if paladin.spellJoM != nil && paladin.PseudoStats.IsUsingJudgementStopAttack != paladin.spellJoM.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
+	if paladin.spellJoM != nil && paladin.Options.IsUsingJudgementStopAttack != paladin.spellJoM.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
 		paladin.spellJoM.Flags = paladin.spellJoM.Flags ^ core.SpellFlagBatchStopAttackMacro
 	}
 
 	for i, v := range paladin.spellsJoR {
-		if v != nil && paladin.PseudoStats.IsUsingJudgementStopAttack != v.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
+		if v != nil && paladin.Options.IsUsingJudgementStopAttack != v.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
 			paladin.spellsJoR[i].Flags = v.Flags ^ core.SpellFlagBatchStopAttackMacro
 		}
 	}
 	
 	for i, v := range paladin.spellsJoC {
-		if v != nil && paladin.PseudoStats.IsUsingJudgementStopAttack != v.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
+		if v != nil && paladin.Options.IsUsingJudgementStopAttack != v.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
 			paladin.spellsJoC[i].Flags = v.Flags ^ core.SpellFlagBatchStopAttackMacro
 		}
 	}

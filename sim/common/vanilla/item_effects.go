@@ -765,7 +765,7 @@ func init() {
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 18797}, spell.ActionID)
+				character.AutoAttacks.ExtraMHAttackProc(sim , 1, core.ActionID{SpellID: 18797}, spell)
 			},
 		})
 	})
@@ -1132,7 +1132,7 @@ func init() {
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				character.AutoAttacks.ExtraMHAttack(sim, 2, core.ActionID{SpellID: 15494}, spell.ActionID)
+				character.AutoAttacks.ExtraMHAttackProc(sim , 2, core.ActionID{SpellID: 15494}, spell)
 			},
 		})
 	})
@@ -1887,7 +1887,7 @@ func init() {
 			DamageMultiplier: 1,
 			ThreatMultiplier: 1,
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 21919}, spell.ActionID)
+				character.AutoAttacks.ExtraMHAttackProc(sim , 1, core.ActionID{SpellID: 21919}, spell)
 			},
 		})
 	})
@@ -2008,7 +2008,7 @@ func init() {
 			SpellFlagsExclude: core.SpellFlagSuppressWeaponProcs,
 			PPM:               1.0,
 			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-				character.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 461985}, spell.ActionID)
+				character.AutoAttacks.ExtraMHAttackProc(sim , 1, core.ActionID{SpellID: 461985}, spell)
 			},
 		})
 	})
@@ -2309,12 +2309,7 @@ func init() {
 				}
 				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.02, "HandOfJustice") {
 					icd.Use(sim)
-
-					if spell.Flags.Matches(core.SpellFlagBatchStopAttackMacro) {
-						aura.Unit.AutoAttacks.StoreExtraMHAttack(sim, 1, core.ActionID{SpellID: 15600}, spell.ActionID)
-					} else {
-						aura.Unit.AutoAttacks.ExtraMHAttack(sim, 1, core.ActionID{SpellID: 15600}, spell.ActionID)
-					}
+					aura.Unit.AutoAttacks.ExtraMHAttackProc(sim , 1, core.ActionID{SpellID: 15600}, spell)
 				}
 			},
 		})
@@ -2585,6 +2580,11 @@ func init() {
 			ProcMask:          core.ProcMaskMelee,
 			SpellFlagsExclude: core.SpellFlagSuppressEquipProcs,
 			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if spell.ProcMask.Matches(core.ProcMaskMeleeSpecial) {
+					procSpell.ProcMask = core.ProcMaskEmpty
+				} else {
+					procSpell.ProcMask = core.ProcMaskTriggerInstant
+				}
 				procSpell.Cast(sim, result.Target)
 			},
 		})

@@ -2156,17 +2156,6 @@ func ApplyWildStrikes(character *Character) *Aura {
 
 	var bonusAP float64
 
-	extraAttacksAura := character.GetOrRegisterAura(Aura{
-		Label:     "Extra Attacks",
-		ActionID:   ActionID{SpellID: 21919}, // Thrash ID
-		Duration:  NeverExpires,
-		MaxStacks: 4,
-		OnGain: func(aura *Aura, sim *Simulation) {
-		},
-		OnExpire: func(aura *Aura, sim *Simulation) {
-		},
-	})
-
 	wsBuffAura := character.GetOrRegisterAura(Aura{
 		Label:     "Wild Strikes Buff",
 		ActionID:  buffActionID,
@@ -2191,10 +2180,6 @@ func ApplyWildStrikes(character *Character) *Aura {
 	MakePermanent(character.GetOrRegisterAura(Aura{
 		Label: "Wild Strikes",
 		OnSpellHitDealt: func(aura *Aura, sim *Simulation, spell *Spell, result *SpellResult) {
-			if extraAttacksAura.IsActive() {
-				extraAttacksAura.SetStacks(sim, aura.Unit.AutoAttacks.GetExtraMHAttacks())
-			}
-		
 			if !result.Landed() || !spell.ProcMask.Matches(ProcMaskMeleeMH) || spell.Flags.Matches(SpellFlagSupressExtraAttack) {
 				return
 			}
@@ -2204,7 +2189,10 @@ func ApplyWildStrikes(character *Character) *Aura {
 				if wsBuffAura.GetStacks() == 2 {
 					wsBuffAura.SetStacks(sim, 1)
 					wsBuffAura.Duration = time.Millisecond * 100 // 100 ms might be generous - could anywhere from 50-150 ms potentially
-					wsBuffAura.Refresh(sim)
+					wsBuffAura.Refresh(sim) // Apply New Duration
+					if sim.Log != nil {
+						aura.Unit.Log(sim, "removed Wildstrikes AP buff by %s for damage %f", spell.String(), result.Damage)
+					}
 				}
 			}
 
@@ -2214,20 +2202,9 @@ func ApplyWildStrikes(character *Character) *Aura {
 				// aura is up _after_ the triggering swing lands, the extra attack only has 1500ms for the AP bonus but the extra attack does not expire
 				wsBuffAura.SetStacks(sim, 2)
 				wsBuffAura.Duration = time.Millisecond * 1500
-				
-				
-				if spell.Flags.Matches(SpellFlagBatchStopAttackMacro) {
-					aura.Unit.AutoAttacks.StoreExtraMHAttack(sim, 1, buffActionID, spell.ActionID)
-					
-					if !extraAttacksAura.IsActive() {
-						extraAttacksAura.Activate(sim)
-					}
-					
-					extraAttacksAura.SetStacks(sim, aura.Unit.AutoAttacks.GetExtraMHAttacks())
-				} else {
-					aura.Unit.AutoAttacks.ExtraMHAttack(sim, 1, buffActionID, spell.ActionID)
-				}
-			}
+				wsBuffAura.Refresh(sim) // Apply New Duration
+				aura.Unit.AutoAttacks.ExtraMHAttackProc(sim , 1, buffActionID, spell)
+			} 	
 		},
 	}))
 

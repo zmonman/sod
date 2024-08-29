@@ -197,8 +197,8 @@ stat_weights_results: {
 dps_results: {
  key: "TestFury-Lvl40-AllItems-BattlegearofHeroism"
  value: {
-  dps: 632.39004
-  tps: 563.99803
+  dps: 632.72339
+  tps: 564.2535
  }
 }
 dps_results: {
@@ -295,8 +295,8 @@ dps_results: {
 dps_results: {
  key: "TestFury-Lvl40-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 646.00921
-  tps: 573.29769
+  dps: 648.17214
+  tps: 577.30187
  }
 }
 dps_results: {
@@ -435,7 +435,7 @@ dps_results: {
 dps_results: {
  key: "TestFury-Lvl60-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 2962.37298
-  tps: 2612.52037
+  dps: 2968.13233
+  tps: 2615.251
  }
 }
