@@ -2190,9 +2190,9 @@ func ApplyWildStrikes(character *Character) *Aura {
 					wsBuffAura.SetStacks(sim, 1)
 					wsBuffAura.Duration = time.Millisecond * 100 // 100 ms might be generous - could anywhere from 50-150 ms potentially
 					wsBuffAura.Refresh(sim) // Apply New Duration
-					if sim.Log != nil {
+					/*if sim.Log != nil {
 						aura.Unit.Log(sim, "removed Wildstrikes AP buff by %s for damage %f", spell.String(), result.Damage)
-					}
+					}*/
 				}
 			}
 

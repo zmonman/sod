@@ -512,9 +512,9 @@ func (sim *Simulation) advanceWeaponAttacks() {
 
 	sim.minWeaponAttackTime = NeverExpires
 	for _, wa := range sim.weaponAttacks {
-		if sim.Log != nil {
+		/*if sim.Log != nil {
 			sim.Log("advanceWeaponAttacks has %d extra attacks stored %d extra attacks pending", wa.extraAttacksStored, wa.extraAttacksPending)
-		}
+		}*/
 		sim.minWeaponAttackTime = min(sim.minWeaponAttackTime, wa.trySwing(sim))
 	}
 }

@@ -298,9 +298,9 @@ func (wa *WeaponAttack) castExtraAttacks(sim *Simulation, numExtraAttacks *int32
 
 		wa.spell.SetMetricsSplit(1)
 		
-		if sim.Log != nil {
+		/*if sim.Log != nil {
 			wa.unit.Log(sim, "unleashes %d extra attacks with startIndex of %d", *numExtraAttacks, startIndex)
-		}
+		}*/
 
 		extraAttacksTemp := *numExtraAttacks
 		*numExtraAttacks = 0 // Prevent Further Additional Attack procs from double casting current numExtraAttacks
@@ -357,21 +357,18 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 			originalCastTime = wa.spell.DefaultCast.CastTime
 			wa.spell.DefaultCast.CastTime = 0
 			wa.spell.SetMetricsSplit(1)
-			if sim.Log != nil {
+			/*if sim.Log != nil {
 				wa.unit.Log(sim, "Setting MH spell metric to 1")
-			}
+			}*/
 		} else {
 			wa.spell.SetMetricsSplit(0)
-			if sim.Log != nil {
+			/*if sim.Log != nil {
 				wa.unit.Log(sim, "Setting MH spell metric to 0")
-			}
+			}*/
 		}
 
 		attackSpell.Cast(sim, wa.unit.CurrentTarget)
 
-		if sim.Log != nil {
-			wa.unit.Log(sim, "Extra attacks pending is %d", wa.extraAttacksPending)
-		}
 		moreAttacks := !isExtraAttack && wa.extraAttacksPending > 0 // True if above cast is a normal Auto attack that triggered an Extra Attack
 		wa.castExtraAttacksTriggered(sim, moreAttacks) // more attacks means we don't count the above cast
 
@@ -381,22 +378,19 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 				wa.spell.WaitTravelTime(sim, func(sim *Simulation) {
 					wa.spell.DefaultCast.CastTime = originalCastTime
 					wa.spell.SetMetricsSplit(0)
-					if sim.Log != nil {
+					/*if sim.Log != nil {
 						wa.unit.Log(sim, "Setting MH spell metric to 0")
-					}
+					}*/
 				})
 			} else {
 				wa.spell.SetMetricsSplit(0)
-				if sim.Log != nil {
+				/*if sim.Log != nil {
 					wa.unit.Log(sim, "Setting MH spell metric to 0")
-				}
+				}*/
 			}
 		}
 
 		if wa.extraAttacksPending > 0 {
-			if sim.Log != nil {
-				wa.unit.Log(sim, "More extra attacks pending")
-			}
 			wa.spell.SetMetricsSplit(1)
 			wa.swingAt = sim.CurrentTime + SpellBatchWindow
 			wa.lastSwingAt = sim.CurrentTime
@@ -500,10 +494,10 @@ func (unit *Unit) EnableAutoAttacks(agent Agent, options AutoAttackOptions) {
 
 		ApplyEffects: func(sim *Simulation, target *Unit, spell *Spell) {
 			baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower())
-			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWhite)
-			if sim.Log != nil {
+			/*result :=*/ spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWhite)
+			/*if sim.Log != nil {
 				sim.Log("MH Attack flag %d damage: %d", spell.Tag, result.Damage)			
-			}
+			}*/
 		},
 	}
 
