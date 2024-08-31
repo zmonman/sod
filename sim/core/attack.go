@@ -263,17 +263,13 @@ func (wa *WeaponAttack) setWeapon(weapon Weapon) {
 // inlineable stub for swing
 func (wa *WeaponAttack) trySwing(sim *Simulation) time.Duration {
 	if sim.CurrentTime < wa.swingAt {
-
-		if sim.Log != nil {
-			wa.unit.Log(sim, "trySwing failed - swing at %f and lastswing at %f", wa.swingAt, wa.lastSwingAt)
-		}
 		return wa.swingAt
 	}
 	return wa.swing(sim)
 }
 
 func (wa *WeaponAttack) castExtraAttacksStored(sim *Simulation) {
-	wa.castExtraAttacks(sim, &wa.extraAttacksStored, 0)
+	wa.castExtraAttacks(sim, wa.extraAttacksStored, 0)
 	wa.extraAttacksStored = 0;
 
 	if wa.extraAttacksAura != nil {
@@ -283,29 +279,19 @@ func (wa *WeaponAttack) castExtraAttacksStored(sim *Simulation) {
 
 func (wa *WeaponAttack) castExtraAttacksTriggered(sim *Simulation, moreAttacks bool) {
 	if moreAttacks {
-		wa.castExtraAttacks(sim, &wa.extraAttacks, 0)
+		wa.castExtraAttacks(sim, wa.extraAttacks, 0)
 	} else {
-		wa.castExtraAttacks(sim, &wa.extraAttacks, 1)
+		wa.castExtraAttacks(sim, wa.extraAttacks, 1)
 	}
+	wa.extraAttacks = 0
 }
 
-func (wa *WeaponAttack) castExtraAttacks(sim *Simulation, numExtraAttacks *int32, startIndex int32) bool {
-	if *numExtraAttacks > 0 {
-		// Ignore the first extra attack, that was used to speed up next attack
-		/*if sim.Log != nil {
-			wa.unit.Log(sim, "Setting MH spell metric to 1")
-		}*/
-
+func (wa *WeaponAttack) castExtraAttacks(sim *Simulation, numExtraAttacks int32, startIndex int32) bool {
+	if numExtraAttacks > 0 {
+		// if startIndex==1, Ignore the first extra attack, that was used to speed up next attack
 		wa.spell.SetMetricsSplit(1)
-		
-		/*if sim.Log != nil {
-			wa.unit.Log(sim, "unleashes %d extra attacks with startIndex of %d", *numExtraAttacks, startIndex)
-		}*/
 
-		extraAttacksTemp := *numExtraAttacks
-		*numExtraAttacks = 0 // Prevent Further Additional Attack procs from double casting current numExtraAttacks
-
-		for i := int32(startIndex); i < extraAttacksTemp; i++ {
+		for i := int32(startIndex); i < numExtraAttacks; i++ {
 			// use original attacks for subsequent extra Attacks
 			wa.spell.Cast(sim, wa.unit.CurrentTarget)
 		}
@@ -326,10 +312,6 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 		wa.extraAttacksPending = 0
 		// Any further procs will be added to extraAttacksPending to be processed next batch
 	}
-
-	/*if sim.Log != nil {
-		wa.unit.Log(sim, "wa.swing Start - with %d stored extra attacks, is ExtraAttack: %t", wa.extraAttacksStored, isExtraAttack)
-	}*/
 
 	wa.castExtraAttacksStored(sim)
 
@@ -357,14 +339,8 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 			originalCastTime = wa.spell.DefaultCast.CastTime
 			wa.spell.DefaultCast.CastTime = 0
 			wa.spell.SetMetricsSplit(1)
-			/*if sim.Log != nil {
-				wa.unit.Log(sim, "Setting MH spell metric to 1")
-			}*/
 		} else {
 			wa.spell.SetMetricsSplit(0)
-			/*if sim.Log != nil {
-				wa.unit.Log(sim, "Setting MH spell metric to 0")
-			}*/
 		}
 
 		attackSpell.Cast(sim, wa.unit.CurrentTarget)
@@ -378,15 +354,9 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 				wa.spell.WaitTravelTime(sim, func(sim *Simulation) {
 					wa.spell.DefaultCast.CastTime = originalCastTime
 					wa.spell.SetMetricsSplit(0)
-					/*if sim.Log != nil {
-						wa.unit.Log(sim, "Setting MH spell metric to 0")
-					}*/
 				})
 			} else {
 				wa.spell.SetMetricsSplit(0)
-				/*if sim.Log != nil {
-					wa.unit.Log(sim, "Setting MH spell metric to 0")
-				}*/
 			}
 		}
 
@@ -404,10 +374,6 @@ func (wa *WeaponAttack) swing(sim *Simulation) time.Duration {
 		// Delay till cast finishes if casting or 100 ms if not
 		wa.swingAt = max(wa.unit.Hardcast.Expires, sim.CurrentTime+time.Millisecond*100)
 	}
-
-	/*if sim.Log != nil {
-		wa.unit.Log(sim, "wa.swing End - with %d stored extra attacks and %d procced extra attacks", wa.extraAttacksStored, wa.extraAttacksPending)
-	}*/
 
 	return wa.swingAt
 }
@@ -494,10 +460,7 @@ func (unit *Unit) EnableAutoAttacks(agent Agent, options AutoAttackOptions) {
 
 		ApplyEffects: func(sim *Simulation, target *Unit, spell *Spell) {
 			baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower())
-			/*result :=*/ spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWhite)
-			/*if sim.Log != nil {
-				sim.Log("MH Attack flag %d damage: %d", spell.Tag, result.Damage)			
-			}*/
+			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWhite)
 		},
 	}
 
@@ -777,10 +740,6 @@ func (aa *AutoAttacks) StoreExtraMHAttack(sim *Simulation, attacks int32, action
 			ActionID:   ActionID{SpellID: 21919}, // Thrash ID
 			Duration:  NeverExpires,
 			MaxStacks: 4, // Max is 4 extra attacks stored - more can proc after
-			OnGain: func(aura *Aura, sim *Simulation) {
-			},
-			OnExpire: func(aura *Aura, sim *Simulation) {
-			},
 		})
 	}
 
@@ -793,7 +752,7 @@ func (aa *AutoAttacks) StoreExtraMHAttack(sim *Simulation, attacks int32, action
 	aa.mh.extraAttacksAura.SetStacks(sim, aa.mh.extraAttacksStored)
 
 	if sim.Log != nil {
-		aa.mh.unit.Log(sim, "stores %d extra attacks from %s triggered by %s, total is %d", attacks, actionID, triggerAction, aa.mh.extraAttacksStored)
+		aa.mh.unit.Log(sim, "stored %d extra attacks from %s triggered by %s, total is %d", attacks, actionID, triggerAction, aa.mh.extraAttacksStored)
 	}
 }
 

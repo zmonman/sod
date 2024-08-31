@@ -151,18 +151,18 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.46415
+  weights: -0.317
   weights: 0
-  weights: 0.62953
-  weights: 0
-  weights: 0
+  weights: 0.71917
   weights: 0
   weights: 0
   weights: 0
   weights: 0
   weights: 0
-  weights: 15.77301
-  weights: 11.15973
+  weights: 0
+  weights: 0
+  weights: 15.99122
+  weights: 14.18609
   weights: 0
   weights: 0
   weights: 0
@@ -260,71 +260,71 @@ dps_results: {
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-BloodGuard'sDreadweave"
  value: {
-  dps: 1365.10257
-  tps: 1569.86214
+  dps: 1336.07323
+  tps: 1540.8328
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-DeathmistRaiment"
  value: {
-  dps: 1209.31528
-  tps: 1368.76817
+  dps: 1181.79781
+  tps: 1341.62307
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-EmeraldEnchantedVestments"
  value: {
-  dps: 1370.60898
-  tps: 1579.74366
+  dps: 1341.73999
+  tps: 1550.87468
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-InfernalPactEssence-216509"
  value: {
-  dps: 2250.63326
-  tps: 3856.43833
+  dps: 2176.28925
+  tps: 3738.68863
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-IronweaveBattlesuit"
  value: {
-  dps: 1170.30166
-  tps: 1312.10014
+  dps: 1139.17381
+  tps: 1280.97229
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-Knight-Lieutenant'sDreadweave"
  value: {
-  dps: 1365.10257
-  tps: 1569.86214
+  dps: 1336.07323
+  tps: 1540.8328
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-MalevolentProphet'sVestments"
  value: {
-  dps: 1803.3246
-  tps: 3120.03203
+  dps: 1739.56905
+  tps: 3024.38367
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-NightmareProphet'sGarb"
  value: {
-  dps: 1782.91377
-  tps: 3079.60255
+  dps: 1721.86321
+  tps: 2988.02671
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-AllItems-ZilaGular-223214"
  value: {
-  dps: 2248.65536
-  tps: 3856.43833
+  dps: 2174.31608
+  tps: 3738.68863
  }
 }
 dps_results: {
  key: "TestAffliction-Lvl60-Average-Default"
  value: {
-  dps: 2259.59382
-  tps: 3874.17636
+  dps: 2192.16127
+  tps: 3772.63575
  }
 }
 dps_results: {
@@ -372,7 +372,7 @@ dps_results: {
 dps_results: {
  key: "TestAffliction-Lvl60-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 2201.4059
-  tps: 3778.68161
+  dps: 2142.52829
+  tps: 3686.8783
  }
 }

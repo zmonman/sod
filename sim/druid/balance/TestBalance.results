@@ -249,7 +249,7 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.13686
+  weights: 0.13749
   weights: 0
   weights: 0.86597
   weights: 0
@@ -259,8 +259,8 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 6.47422
-  weights: 6.04807
+  weights: 6.48162
+  weights: 6.04636
   weights: 0
   weights: 0
   weights: 0
@@ -347,18 +347,18 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.54377
+  weights: 0.50303
   weights: 0
-  weights: 1.83123
-  weights: 0
-  weights: 0
+  weights: 1.82951
   weights: 0
   weights: 0
   weights: 0
   weights: 0
   weights: 0
   weights: 0
-  weights: 19.27293
+  weights: 0
+  weights: 0
+  weights: 19.59563
   weights: 0
   weights: 0
   weights: 0
@@ -498,15 +498,15 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Lvl40-AllItems-FeralheartRaiment"
  value: {
-  dps: 228.30101
-  tps: 236.77644
+  dps: 225.64457
+  tps: 234.12
  }
 }
 dps_results: {
  key: "TestBalance-Lvl40-Average-Default"
  value: {
-  dps: 703.75081
-  tps: 714.48308
+  dps: 700.68866
+  tps: 711.42093
  }
 }
 dps_results: {
@@ -596,15 +596,15 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Lvl40-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 699.71169
-  tps: 710.47422
+  dps: 696.8355
+  tps: 707.59803
  }
 }
 dps_results: {
  key: "TestBalance-Lvl50-AllItems-FeralheartRaiment"
  value: {
-  dps: 508.02998
-  tps: 522.77599
+  dps: 503.73036
+  tps: 518.45137
  }
 }
 dps_results: {
@@ -708,99 +708,99 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-BloodGuard'sCracklingLeather"
  value: {
-  dps: 1065.20074
-  tps: 1082.93261
+  dps: 1049.40982
+  tps: 1067.13186
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-BloodGuard'sLeather"
  value: {
-  dps: 1004.39556
-  tps: 1022.44209
+  dps: 987.95887
+  tps: 1005.95624
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-BloodGuard'sRestoredLeather"
  value: {
-  dps: 972.87674
-  tps: 990.39227
+  dps: 958.7712
+  tps: 976.24248
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-CoagulateBloodguard'sLeathers"
  value: {
-  dps: 1367.48532
-  tps: 1386.01124
+  dps: 1358.1572
+  tps: 1376.74703
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-EmeraldDreamkeeperGarb"
  value: {
-  dps: 977.12522
-  tps: 994.63584
+  dps: 960.13172
+  tps: 977.70134
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-EmeraldLeathers"
  value: {
-  dps: 1003.40779
-  tps: 1021.45432
+  dps: 987.12344
+  tps: 1005.12081
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-EmeraldWatcherVestments"
  value: {
-  dps: 1040.0606
-  tps: 1057.67938
+  dps: 1016.12436
+  tps: 1033.67923
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-ExiledProphet'sRaiment"
  value: {
-  dps: 1375.70785
-  tps: 1394.06581
+  dps: 1362.91312
+  tps: 1381.31042
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-FeralheartRaiment"
  value: {
-  dps: 981.40675
-  tps: 1000.23332
+  dps: 968.21721
+  tps: 987.04378
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-Knight-Lieutenant'sCracklingLeather"
  value: {
-  dps: 1065.20074
-  tps: 1082.93261
+  dps: 1049.40982
+  tps: 1067.13186
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-Knight-Lieutenant'sLeather"
  value: {
-  dps: 1004.39556
-  tps: 1022.44209
+  dps: 987.95887
+  tps: 1005.95624
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-Knight-Lieutenant'sRestoredLeather"
  value: {
-  dps: 972.87674
-  tps: 990.39227
+  dps: 958.7712
+  tps: 976.24248
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-AllItems-LostWorshipper'sArmor"
  value: {
-  dps: 1454.3935
-  tps: 1472.86042
+  dps: 1437.80316
+  tps: 1456.32417
  }
 }
 dps_results: {
  key: "TestBalance-Lvl60-Average-Default"
  value: {
-  dps: 2645.26626
-  tps: 2664.87751
+  dps: 2641.11075
+  tps: 2660.73924
  }
 }
 dps_results: {
@@ -890,7 +890,7 @@ dps_results: {
 dps_results: {
  key: "TestBalance-Lvl60-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 2627.59274
-  tps: 2647.49677
+  dps: 2634.55992
+  tps: 2654.48362
  }
 }

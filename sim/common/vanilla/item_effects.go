@@ -405,7 +405,7 @@ func init() {
 	// https://www.wowhead.com/classic/item=228603/blackhand-doomsaw
 	// Chance on hit: Wounds the target for 324 to 540 damage.
 	// TODO: Proc rate based on the original item
-	itemhelpers.CreateWeaponProcDamagePhantomStrike(BlackhandDoomsaw, "Blackhand Doomsaw", 0.4, 16549, core.SpellSchoolPhysical, 324, 216, 0, core.DefenseTypeMelee)
+	itemhelpers.CreateWeaponProcDamage(BlackhandDoomsaw, "Blackhand Doomsaw", 0.4, 16549, core.SpellSchoolPhysical, 324, 216, 0, core.DefenseTypeMelee)
 
 	// https://www.wowhead.com/classic/item=220569/blistering-ragehammer
 	// Chance on hit: Increases damage done by 20 and attack speed by 5% for 15 sec.

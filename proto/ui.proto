@@ -335,10 +335,6 @@ message SavedSettings {
 	double distance_from_target = 14;
 	HealingModel healing_model = 15;
 
-	// Stop Attack Macro Info
-	bool IsUsingCrusaderStrikeStopAttack = 19;
-	bool IsUsingJudgementStopAttack = 20;
-	bool IsUsingDivineStormStopAttack = 21;
 }
 
 message SavedTalents {
