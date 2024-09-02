@@ -48,6 +48,7 @@ import BackdraftGearP3 from './gear_sets/p3/backdraft.gear.json';
 import NFRuinGearP3 from './gear_sets/p3/nf.ruin.gear.json';
 import AffGearP4 from './gear_sets/p4/affliction.gear.json';
 import DestroGearP4 from './gear_sets/p4/destruction.gear.json';
+import AffGearP5 from './gear_sets/phase_5.gear.json';
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Gear Presets
